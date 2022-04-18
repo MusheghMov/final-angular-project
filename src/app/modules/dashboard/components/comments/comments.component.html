@@ -1,0 +1,16 @@
+<div class="info-container">
+  <h1>{{ user.name }} Todos</h1>
+</div>
+<br>
+
+<div class="card-container" *ngFor="let post of commentsArr, let j = index">
+  <div class="card">
+      <h5>Post: {{post.id}}</h5>
+    <p-tabView>
+      <p-tabPanel [header]="'comment ' + com.id.toString()" *ngFor="let com of post.comments; let i = index" [selected]="i == 0">
+        <p>{{com.body}}</p>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+
+</div>

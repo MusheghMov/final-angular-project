@@ -1,0 +1,47 @@
+<div class="login-container">
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h1>Create Account</h1>
+        <label for="name">Name</label>
+        <input
+          [ngClass]="{'invalid': submitted && registerForm.controls['name'].invalid}"
+          formControlName="name"
+          type="text"
+          id="name"/>
+        <p *ngIf="submitted && registerForm.controls['name'].invalid">Name is required</p>
+        <label for="email">Email</label>
+        <input
+          [ngClass]="{'invalid': submitted && registerForm.controls['email'].invalid}"
+          formControlName="email"
+          type="email"
+          id="email"/>
+        <p *ngIf="submitted && registerForm.controls['email'].invalid">Incorrect Email</p>
+        <label for="password">Password</label>
+        <input
+          [ngClass]="{'invalid': submitted && registerForm.controls['password'].invalid}"
+          formControlName="password"
+          type="password"
+          id="password"/>
+        <p *ngIf="submitted && registerForm.controls['password'].invalid">Password is too short (not less then 8
+          digits)</p>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button
+            class="ghost"
+            id="signIn"
+            routerLink="/auth/login">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

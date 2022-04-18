@@ -1,0 +1,79 @@
+<header id="nav-wrapper">
+  <nav id="nav">
+    <div class="nav left">
+      <span class="gradient skew">
+        <h1 class="logo un-skew"><a>LOGO</a></h1>
+      </span>
+      <button id="menu" class="btn-nav"
+              (click)="onShowNavbarMenu()"
+      >
+        <i class="ph-list"></i>
+      </button>
+    </div>
+    <div class="nav right">
+      <a
+        class="nav-link"
+        [routerLink]="'user-info/' + userId"
+        [ngClass]="{'active': destination==='user-info' || destination==='edit-user'}"
+        (click)="onShowNavbarMenu()"
+      >
+        <span class="nav-link-span">
+          <span class="u-nav">Users</span>
+        </span>
+      </a>
+      <a
+        class="nav-link"
+        [ngClass]="{'active': destination==='posts'}"
+        [routerLink]="'posts/' + userId"
+        (click)="onShowNavbarMenu()"
+      >
+        <span class="nav-link-span">
+          <span class="u-nav">Posts</span>
+        </span>
+      </a>
+      <a class="nav-link"
+         [ngClass]="{'active': destination==='comments'}"
+         [routerLink]="'comments/' + userId"
+         (click)="onShowNavbarMenu()"
+      >
+        <span class="nav-link-span">
+          <span class="u-nav">Comments</span>
+        </span>
+      </a>
+      <a
+        class="nav-link"
+        [routerLink]="'todos/' + userId"
+        [ngClass]="{'active': destination==='todos'}"
+        (click)="onShowNavbarMenu()"
+      >
+        <span class="nav-link-span">
+          <span class="u-nav">Todos</span>
+        </span>
+      </a>
+      <a class="nav-link" (click)="onLogout()">
+        <span class="nav-link-span">
+          <span class="u-nav">LogOut</span>
+        </span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<section class="dashboard-section">
+  <div class="dashboard-menu">
+    <a
+      (click)="onDetectUser(user)"
+      *ngFor="let user of users"
+      [routerLink]="destination + '/' + user.id"
+      [ngClass]="{'active-user': userTs===user}">
+      {{ user.name }}
+    </a>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="dashboard-content">
+    <router-outlet></router-outlet>
+  </div>
+</section>
+

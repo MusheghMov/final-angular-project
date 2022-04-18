@@ -1,0 +1,71 @@
+<form [formGroup]="userForm">
+  <label for="id">Id: </label>
+  <input type="text" id="id" formControlName="id" class="form-control">
+
+  <label for="id">name: </label>
+  <input type="text" id="name" formControlName="name" class="form-control">
+
+  <label for="username">Username: </label>
+  <input type="text" id="username" formControlName="username" class="form-control">
+
+  <label for="email">Email: </label>
+  <input type="text" id="email" formControlName="email" class="form-control">
+
+  <div formGroupName="address">
+    <p>Address:</p>
+    <label for="street">Street: </label>
+    <input type="text" id="street" formControlName="street" class="form-control">
+
+    <label for="suite">Suite: </label>
+    <input type="text" id="suite" formControlName="suite" class="form-control">
+
+    <label for="city">City: </label>
+    <input type="text" id="city" formControlName="city" class="form-control">
+
+    <label for="zipcode">Zipcode: </label>
+    <input type="text" id="zipcode" formControlName="zipcode" class="form-control">
+
+    <div formGroupName="geo">
+      <p>Geo:</p>
+      <label for="lat">Lat: </label>
+      <input type="text" id="lat" formControlName="lat" class="form-control">
+
+      <label for="lng">Lng: </label>
+      <input type="text" id="lng" formControlName="lng" class="form-control">
+    </div>
+  </div>
+
+  <label for="phone">Phone: </label>
+  <input type="text" id="phone" formControlName="phone" class="form-control">
+
+  <label for="website">Website: </label>
+  <input type="text" id="website" formControlName="website" class="form-control">
+
+  <div formGroupName="company">
+    <p>Company:</p>
+    <label for="companyName">name: </label>
+    <input type="text" id="companyName" formControlName="name" class="form-control">
+
+    <label for="catchPhrase">Catch Phrase: </label>
+    <input type="text" id="catchPhrase" formControlName="catchPhrase" class="form-control">
+
+    <label for="bs">bs: </label>
+    <input type="text" id="bs" formControlName="bs" class="form-control">
+  </div>
+</form>
+
+<div class="button-container">
+  <button
+    class="button-28"
+    *ngIf="userState"
+    (click)="onSaveChanges()">
+    Save Changes
+  </button>
+  <button
+    class="button-28"
+    *ngIf="!userState">
+    Add User
+  </button>
+</div>
+
+<p-toast position="top-right" [preventOpenDuplicates]="true"></p-toast>

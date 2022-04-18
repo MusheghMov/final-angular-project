@@ -1,0 +1,99 @@
+<div class="info-container">
+  <h1>{{ user.name }} Posts</h1>
+</div>
+
+<form>
+  <div class="form-group form-inline">
+    Full text search:
+    <input class="form-control ml-2" type="text" name="name" [(ngModel)]="searchText"/>
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">UserId</th>
+    <th scope="col">Id</th>
+    <th scope="col">Title</th>
+    <th scope="col">Body</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let post of posts | search: searchText, let i = index">
+    <th scope="row">{{ post.userId }}</th>
+    <td>
+      <ngb-highlight [result]="post.id.toString()"></ngb-highlight>
+    </td>
+    <td>
+      <ngb-highlight [result]="post.title"></ngb-highlight>
+    </td>
+    <td>
+      <ngb-highlight [result]="post.body"></ngb-highlight>
+    </td>
+    <td>
+      <a
+        class="btn btn-primary"
+        (click)="open(content, i)"
+      >
+        Edit
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="postForm">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="userId">userId: </label>
+            <input type="text" id="userId" formControlName="userId" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="postId">postId: </label>
+            <input type="text" id="postId" formControlName="id" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="postTitle">postTitle: </label>
+            <input type="text" id="postTitle" formControlName="title" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <label for="postBody">postBody: </label>
+            <textarea id="postBody" rows="9" formControlName="body" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<p-toast position="bottom-left"></p-toast>
+

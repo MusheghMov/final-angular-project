@@ -1,0 +1,104 @@
+<div class="info-container">
+  <h1>{{ user.name }} Todos</h1>
+</div>
+
+<form>
+  <div class="form-group form-inline">
+    Full text search:
+    <input class="form-control ml-2" type="text" name="name" [(ngModel)]="searchText"/>
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">UserId</th>
+    <th scope="col">Id</th>
+    <th scope="col">Title</th>
+    <th scope="col">completed</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todos  | search: searchText, let i = index">
+    <th scope="row">{{ todo.userId }}</th>
+    <td>
+      <ngb-highlight [result]="todo.id.toString()"></ngb-highlight>
+    </td>
+    <td>
+      <ngb-highlight [result]="todo.title"></ngb-highlight>
+    </td>
+    <td>
+      <span
+        class="btn"
+        style="cursor: default"
+        [ngClass]="{'btn-success': todo.completed, 'btn-danger': !todo.completed}"
+      >
+        {{ todo.completed }}
+      </span>
+    </td>
+    <td>
+      <a
+        class="btn btn-primary"
+        (click)="open(content, i)"
+      >
+        Edit
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="todoForm">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="userId">userId: </label>
+            <input type="text" id="userId" formControlName="userId" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="todoId">todoId: </label>
+            <input type="text" id="todoId" formControlName="id" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <label for="todoTitle">todoTitle: </label>
+            <textarea rows="3" id="todoTitle" formControlName="title" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="completed">completed: </label>
+            <input id="completed" type="text" formControlName="completed" class="form-control">
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<p-toast position="bottom-left"></p-toast>

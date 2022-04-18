@@ -1,0 +1,83 @@
+<div class="info-container">
+  <h1>{{ user.name}} info</h1>
+</div>
+
+<table class="table table-striped">
+  <tbody>
+  <tr>
+    <td >Id</td>
+    <td>{{ user.id }}</td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>{{ user.name  }}</td>
+  </tr>
+  <tr>
+    <td>Username</td>
+    <td>{{ user.username }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{ user.email }}</td>
+  </tr>
+  <tr>
+    <td>Street</td>
+    <td>{{ user.address.street }}</td>
+  </tr>
+  <tr>
+    <td>Suite</td>
+    <td>{{ user.address.suite }}</td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td>{{ user.address.city }}</td>
+  </tr>
+  <tr>
+    <td>Zipcode</td>
+    <td>{{ user.address.zipcode }}</td>
+  </tr>
+  <tr>
+    <td>Latitude</td>
+    <td>{{ user.address.geo.lat }}</td>
+  </tr>
+  <tr>
+    <td>Longitude</td>
+    <td>{{ user.address.geo.lng }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ user.phone }}</td>
+  </tr>
+  <tr>
+    <td>Website</td>
+    <td>{{ user.website }}</td>
+  </tr>
+  <tr>
+    <td>Company name</td>
+    <td>{{ user.company.name }}</td>
+  </tr>
+  <tr>
+    <td>Company catchPhrase</td>
+    <td>{{ user.company.catchPhrase }}</td>
+  </tr>
+  <tr>
+    <td>Company bs</td>
+    <td>{{ user.company.bs }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="button-container">
+  <button
+    class="button-28"
+    [routerLink]="'../../edit-user/' + user.id"
+    [queryParams]="{destination: 'edit-user'}">Edit User
+  </button>
+
+  <button
+    class="button-28"
+    [routerLink]="'../../add-user'"
+    [queryParams]="{addUser: true}">Add User
+  </button>
+</div>
+
