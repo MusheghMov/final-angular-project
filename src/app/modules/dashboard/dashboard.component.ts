@@ -69,7 +69,5 @@ export class DashboardComponent implements OnInit {
       }
       this.navbarMenuBtnClicked = !this.navbarMenuBtnClicked;
     }
-
-
   }
 }

@@ -30,7 +30,7 @@ export class CommentsResolver implements Resolve<Comment[][]> {
 
 
           res.posts.forEach((post: Post) => {
-             post.comments = res.comments.filter((item: Comment) => item.postId === post.id);
+            post.comments = res.comments.filter((item: Comment) => item.postId === post.id);
           });
 
           return res.posts;

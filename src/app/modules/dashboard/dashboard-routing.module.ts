@@ -52,7 +52,6 @@ const routes: Routes = [
       },
     ]
   },
-  // {path: '**', redirectTo: 'dashboard/user-info/1', pathMatch: 'full'}
 ];
 
 @NgModule({

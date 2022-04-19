@@ -9,7 +9,8 @@ import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/rou
 })
 export class TodoResolver implements Resolve<Todo[]> {
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) {
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Todo[]> {
     return this.todoService.getTodoByUserId(route.params['id'])

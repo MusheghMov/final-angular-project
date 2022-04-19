@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import {catchError, Observable, retry, throwError} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import {MessageService} from "primeng/api";
 
 @Injectable()
